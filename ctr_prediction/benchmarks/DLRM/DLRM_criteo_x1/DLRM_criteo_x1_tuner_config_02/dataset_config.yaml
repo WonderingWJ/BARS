@@ -1,6 +1,6 @@
 criteo_x1_7b681156:
     data_format: csv
-    data_root: ../data/Criteo/
+    data_root: /data/Criteo/
     feature_cols:
     -   active: true
         dtype: float
@@ -13,6 +13,6 @@ criteo_x1_7b681156:
         type: categorical
     label_col: {dtype: float, name: label}
     min_categr_count: 1
-    test_data: ../data/Criteo/Criteo_x1/test.csv
-    train_data: ../data/Criteo/Criteo_x1/train.csv
-    valid_data: ../data/Criteo/Criteo_x1/valid.csv
+    test_data: /data/Criteo/Criteo_x1/test.csv
+    train_data: /data/Criteo/Criteo_x1/train.csv
+    valid_data: /data/Criteo/Criteo_x1/valid.csv

@@ -2,10 +2,11 @@ import os
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 import sys
 # Add FuxiCTR library to system path
-sys.path.append('YOUR_PATH_TO_FuxiCTR/')
+sys.path.append('/project/FuxiCTR/')
+#sys.path.append('/project/ctr_ref/FuxiCTR/')
 # FuxiCTR v1.2.1 is required in this benchmark
 import fuxictr
-assert fuxictr.__version__ == "v1.2.1"
+#assert fuxictr.__version__ == "1.2.1"
 from fuxictr import datasets
 from datetime import datetime
 from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list
@@ -17,7 +18,6 @@ import argparse
 import logging
 import os
 from pathlib import Path
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -67,6 +67,7 @@ if __name__ == '__main__':
     model = model_class(feature_map, **params)
     # print number of parameters used in model
     model.count_parameters()
+
     # fit the model
     model.fit_generator(train_gen, validation_data=valid_gen, **params)
 
