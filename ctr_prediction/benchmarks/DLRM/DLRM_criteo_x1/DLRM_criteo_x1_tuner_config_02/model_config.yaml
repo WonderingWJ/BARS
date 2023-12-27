@@ -1,14 +1,18 @@
-DLRM_criteo_x1_001_4d897285:
+DLRM_criteo_x1_000_debug:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 65536
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
     bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    gradient_clip_method: "CowClip"
+    clip_config: '{"clip_ratio": 1.0, "bound": 1e-4}'
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
     learning_rate: 0.001
@@ -16,17 +20,130 @@ DLRM_criteo_x1_001_4d897285:
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_000/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: True
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_001_debug:
+    batch_norm: true
+    batch_size: 65536
+    eval_batch_size: 65536
+    eval_freq: 504
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    gradient_clip_method: "AdaptiveGradientClip"
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_000/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: True
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_002_debug:
+    batch_norm: true
+    batch_size: 65536
+    eval_batch_size: 65536
+    eval_freq: 504
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    clip_config: '{"clip_ratio": 1.0, "bound": 1e-4}'
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_000/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: True
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_001_4d897285:
+    batch_norm: true
+    batch_size: 65536
+    eval_batch_size: 65536
+    eval_freq: 504
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_001/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -35,33 +152,35 @@ DLRM_criteo_x1_001_4d897285:
     verbose: 0
 DLRM_criteo_x1_002_a6fc2766:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
+    bottom_mlp_dropout: 0
     bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
     debug: false
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.002
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_002/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd 
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
     seed: 2021
-    shuffle: true
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -70,173 +189,183 @@ DLRM_criteo_x1_002_a6fc2766:
     verbose: 0
 DLRM_criteo_x1_003_45c8c120:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
     bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.004
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_003/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_004_70cf7b88:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
+    bottom_mlp_dropout: 0
     bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0 
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.008
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_004/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
     seed: 2021
-    shuffle: true
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_005_961cfa24:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
     bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
     debug: false
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.016
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_005/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
     seed: 2021
-    shuffle: true
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_006_6985ac6d:
     batch_norm: true
-    batch_size: 4096
-    bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400, 400, 400]
-    dataset_id: criteo_x1_7b681156
-    debug: false
-    embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
-    every_x_epochs: 1
-    interaction_op: dot
-    learning_rate: 0.001
-    loss: binary_crossentropy
-    metrics: [AUC, logloss]
-    model: DLRM
-    model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
-    monitor: AUC
-    monitor_mode: max
-    net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
-    patience: 2
-    pickle_feature_encoder: true
-    save_best_only: true
-    seed: 2021
-    shuffle: true
-    task: binary_classification
-    top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
-    top_mlp_units: [400, 400, 400]
-    use_hdf5: true
-    verbose: 0
-DLRM_criteo_x1_007_0a9d7ca5:
-    batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400, 400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0 
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.01
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_006/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0              
+DLRM_criteo_x1_007_0a9d7ca5:
+    batch_norm: true
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0 
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.02
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_007/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -245,33 +374,35 @@ DLRM_criteo_x1_007_0a9d7ca5:
     verbose: 0
 DLRM_criteo_x1_008_22e143da:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400, 400]
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.04
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_008/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -280,85 +411,91 @@ DLRM_criteo_x1_008_22e143da:
     verbose: 0
 DLRM_criteo_x1_009_4dcbeef9:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400, 400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0 
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.08
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_009/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
-    verbose: 0
+    verbose: 0    
 DLRM_criteo_x1_010_43b467f5:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 16384
+    eval_batch_size: 65536
+    eval_freq: 504
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400, 400]
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.16
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_010/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16 
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
-    verbose: 0
+    verbose: 0    
 DLRM_criteo_x1_011_54cd5d86:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400, 400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
     learning_rate: 0.001
@@ -366,87 +503,91 @@ DLRM_criteo_x1_011_54cd5d86:
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_011/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
-    verbose: 0
+    verbose: 0   
 DLRM_criteo_x1_012_7c55c4a8:
     batch_norm: true
-    batch_size: 4096
-    bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400, 400]
-    dataset_id: criteo_x1_7b681156
-    debug: false
-    embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
-    every_x_epochs: 1
-    interaction_op: dot
-    learning_rate: 0.001
-    loss: binary_crossentropy
-    metrics: [AUC, logloss]
-    model: DLRM
-    model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
-    monitor: AUC
-    monitor_mode: max
-    net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
-    patience: 2
-    pickle_feature_encoder: true
-    save_best_only: true
-    seed: 2021
-    shuffle: true
-    task: binary_classification
-    top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
-    top_mlp_units: [400, 400, 400]
-    use_hdf5: true
-    verbose: 0
-DLRM_criteo_x1_013_f390ff4d:
-    batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.002
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_012/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_013_f390ff4d:
+    batch_norm: true
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.004
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_013/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -455,33 +596,35 @@ DLRM_criteo_x1_013_f390ff4d:
     verbose: 0
 DLRM_criteo_x1_014_492c0755:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400]
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.008
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_014/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
     top_mlp_dropout: 0.2
@@ -490,120 +633,239 @@ DLRM_criteo_x1_014_492c0755:
     verbose: 0
 DLRM_criteo_x1_015_e01cb53b:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.016
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_015/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_016_1441ec15:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400]
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.01
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_016/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.3
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_017_707f287f:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
     bottom_mlp_dropout: 0
-    bottom_mlp_units: [400]
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
-    learning_rate: 0.001
+    learning_rate: 0.02
     loss: binary_crossentropy
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_017/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
 DLRM_criteo_x1_018_6a414011:
     batch_norm: true
-    batch_size: 4096
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
     bottom_mlp_activations: ReLU
-    bottom_mlp_dropout: 0.1
-    bottom_mlp_units: [400]
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
     dataset_id: criteo_x1_7b681156
-    debug: false
+    debug: true
     embedding_dim: 10
-    embedding_regularizer: 1.0e-05
-    epochs: 100
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.04
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_018/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_019_ade63488:
+    batch_norm: true
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.08
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_019/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_020_930b9cb0:
+    batch_norm: true
+    batch_size: 8192
+    eval_batch_size: 65536
+    eval_freq: 1008
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.16
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x_020/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_021_87b9qizg:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
     every_x_epochs: 1
     interaction_op: dot
     learning_rate: 0.001
@@ -611,20 +873,1093 @@ DLRM_criteo_x1_018_6a414011:
     metrics: [AUC, logloss]
     model: DLRM
     model_id: DLRM_base
-    model_root: ./Criteo/DLRM_criteo_x1/
+    model_root: ./Criteo/DLRM_criteo_x1_021/
     monitor: AUC
     monitor_mode: max
     net_regularizer: 0
-    num_workers: 3
-    optimizer: adam
+    num_workers: 16
+    optimizer: sgd
     patience: 2
     pickle_feature_encoder: true
     save_best_only: true
-    seed: 2021
-    shuffle: true
+    seed: 2023
+    shuffle: False
     task: binary_classification
     top_mlp_activations: ReLU
-    top_mlp_dropout: 0.4
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_022_1gbvib99:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.002
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_022/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
     top_mlp_units: [400, 400, 400]
     use_hdf5: true
     verbose: 0
+DLRM_criteo_x1_023_01j7klmf:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.004
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_023/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_024_7drg7u3g:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.008
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_024/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_025_pzosu51n:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.016
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_025/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_026_dqo20thm:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.01
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_026/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_027_z6pe9gl2:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.02
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_027/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_028_s8sjltc5:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.04
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_028/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_029_bpk5gvb6:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.08
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_029/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_030_ah0zj198:
+    batch_norm: true
+    batch_size: 4096
+    eval_batch_size: 65536
+    eval_freq: 2015
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.16
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_030/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0
+DLRM_criteo_x1_031_sbto2w5e:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_031/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0    
+DLRM_criteo_x1_032_sbto2w5e:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.002
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_032/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_033_npa62vgh:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.004
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_033/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_034_y4js52e1:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.008
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_034/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_035_33dajuqa:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.016
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_035/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_036_431034qv:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.01
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_036/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_037_5x4df5ql:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.02
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_037/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_038_r4cwqucu:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.04
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_038/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_039_9kq3w150:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.08
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_039/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_040_85s8ehb2:
+    batch_norm: true
+    batch_size: 2048
+    eval_batch_size: 65536
+    eval_freq: 4029
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.16
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_040/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_041_sbto2w5e:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_041/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_042_sbto2w5e:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.002
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_042/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_043_npa62vgh:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.004
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_043/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_044_y4js52e1:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.008
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_044/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_045_33dajuqa:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.016
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_045/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0  
+DLRM_criteo_x1_046_431034qv:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.01
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_046/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_047_5x4df5ql:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.02
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_047/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_048_r4cwqucu:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.04
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_048/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_049_9kq3w150:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.08
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_049/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0 
+DLRM_criteo_x1_050_85s8ehb2:
+    batch_norm: true
+    batch_size: 1024
+    eval_batch_size: 65536
+    eval_freq: 8058
+    bottom_mlp_activations: ReLU
+    bottom_mlp_dropout: 0
+    bottom_mlp_units: [400, 400, 400]
+    dataset_id: criteo_x1_7b681156
+    debug: true
+    embedding_dim: 10
+    embedding_regularizer: 0
+    epochs: 10
+    every_x_epochs: 1
+    interaction_op: dot
+    learning_rate: 0.16
+    loss: binary_crossentropy
+    metrics: [AUC, logloss]
+    model: DLRM
+    model_id: DLRM_base
+    model_root: ./Criteo/DLRM_criteo_x1_050/
+    monitor: AUC
+    monitor_mode: max
+    net_regularizer: 0
+    num_workers: 16
+    optimizer: sgd
+    patience: 2
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 2023
+    shuffle: False
+    task: binary_classification
+    top_mlp_activations: ReLU
+    top_mlp_dropout: 0.2
+    top_mlp_units: [400, 400, 400]
+    use_hdf5: true
+    verbose: 0     
